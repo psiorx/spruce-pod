@@ -131,6 +131,14 @@ std::string spruce::path::extension()
     return path_str.substr( dot );
 }
 
+void spruce::path::setExtension(std::string const & str)
+{
+  size_t ext = path_str.rfind(extension());
+  if(ext == std::string::npos)
+    ext = path_str.length();
+  path_str = path_str.substr(0, ext) + str;
+}
+
 /*-------------------------------------------------------
     class path.root
 ---------------------------------------------------------*/

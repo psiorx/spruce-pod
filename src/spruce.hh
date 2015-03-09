@@ -35,6 +35,8 @@ public:
 
     std::string extension();
 
+    void setExtension(std::string const & ext);
+
     std::string root();
 
     bool isFile() const;
