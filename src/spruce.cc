@@ -135,10 +135,17 @@ void spruce::path::append(std::string const & str)
 {
   if(isFile())
     return;
-  if(path_str.rfind('/') == path_str.length())
-    path_str.append(str);
+  std::string str_append;
+
+  if(str.find('/') == 0)
+    str_append = str.substr(1, str.length());
   else
-    path_str.append("/" + str);
+    str_append = str;
+
+  if(path_str.rfind('/') == path_str.length())
+    path_str.append(str_append);
+  else
+    path_str.append("/" + str_append);
 }
 
 void spruce::path::setExtension(std::string const & str)
